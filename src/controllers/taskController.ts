@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '../lib/prisma';
 import { Request, Response } from '../types';
 
 enum TaskColor {
@@ -22,8 +22,6 @@ interface Task {
   createdAt: Date;
   updatedAt: Date;
 }
-
-const prisma = new PrismaClient();
 
 export class TaskController {
   public async getTasks(req: Request, res: Response): Promise<void> {
