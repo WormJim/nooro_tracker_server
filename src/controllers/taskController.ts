@@ -56,13 +56,20 @@ export class TaskController {
 
   public async updateTask(req: Request, res: Response): Promise<void> {
     const taskId = parseInt(req.params.id, 10);
-    const { title, completed, color } = req.body;
+    const { title, completed, color, description } = req.body;
     const updatedTask = await prisma.task.update({
       where: { id: taskId },
       data: {
         title,
-        completed,
         color,
+        completed,
+        completedAt:
+          completed === undefined || completed === null
+            ? undefined
+            : completed
+              ? new Date()
+              : null,
+        description,
       },
     });
     res.json(updatedTask);
