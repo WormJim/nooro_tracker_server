@@ -31,6 +31,18 @@ export class TaskController {
     res.json(tasks);
   }
 
+  public async getTask(req: Request, res: Response): Promise<void> {
+    const taskId = parseInt(req.params.id, 10);
+    const task = await prisma.task.findUnique({
+      where: { id: taskId },
+    });
+    if (!task) {
+      res.status(404).send('Task not found');
+      return;
+    }
+    res.json(task);
+  }
+
   public async createTask(req: Request, res: Response): Promise<void> {
     const { title, color } = req.body;
     const newTask = await prisma.task.create({
