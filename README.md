@@ -17,6 +17,10 @@ Nooro Task Tracker API
 │   │   └── taskRoutes.ts     # Task routes
 │   └── types                 # Type definitions
 │       └── index.ts          # Custom types for requests and responses
+├── prisma                    # Prisma directory for database schema and seed
+│   ├── schema.prisma         # Prisma schema file
+│   ├── seed.ts               # Seed script for populating the database
+│   └── tsconfig.json         # TypeScript configuration for Prisma
 ├── package.json              # NPM package configuration
 ├── tsconfig.json             # TypeScript configuration
 └── README.md                 # Project documentation
@@ -43,10 +47,7 @@ npm start
 ### Tasks
 
 - `GET /api/tasks` - Retrieve all tasks
+- `GET /api/tasks/:id` - Retrieve a task by ID
 - `POST /api/tasks` - Create a new task
-- `PUT /api/tasks/:id` - Update a task by ID
+- `PATCH /api/tasks/:id` - Partially update a task by ID
 - `DELETE /api/tasks/:id` - Delete a task by ID
-
-## License
-
-This project is licensed under the MIT License.
