@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "../types";
 
 enum TaskColor {
@@ -22,14 +23,44 @@ interface Task {
   updatedAt: Date;
 }
 
-let tasks: Task[] = [];
+const prisma = new PrismaClient();
 
 export class TaskController {
-  public getTasks(req: Request, res: Response): void {}
+  public async getTasks(req: Request, res: Response): Promise<void> {
+    const tasks = await prisma.task.findMany();
+    res.json(tasks);
+  }
 
-  public createTask(req: Request, res: Response): void {}
+  public async createTask(req: Request, res: Response): Promise<void> {
+    const { title, color } = req.body;
+    const newTask = await prisma.task.create({
+      data: {
+        title,
+        color,
+      },
+    });
+    res.status(201).json(newTask);
+  }
 
-  public updateTask(req: Request, res: Response): void {}
+  public async updateTask(req: Request, res: Response): Promise<void> {
+    const taskId = parseInt(req.params.id, 10);
+    const { title, completed, color } = req.body;
+    const updatedTask = await prisma.task.update({
+      where: { id: taskId },
+      data: {
+        title,
+        completed,
+        color,
+      },
+    });
+    res.json(updatedTask);
+  }
 
-  public deleteTask(req: Request, res: Response): void {}
+  public async deleteTask(req: Request, res: Response): Promise<void> {
+    const taskId = parseInt(req.params.id, 10);
+    await prisma.task.delete({
+      where: { id: taskId },
+    });
+    res.status(204).send();
+  }
 }
