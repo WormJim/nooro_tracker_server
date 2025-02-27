@@ -1,17 +1,17 @@
-import { PrismaClient } from "@prisma/client";
-import { Request, Response } from "../types";
+import { PrismaClient } from '@prisma/client';
+import { Request, Response } from '../types';
 
 enum TaskColor {
-  RED = "red",
-  GREEN = "green",
-  BLUE = "blue",
-  YELLOW = "yellow",
-  ORANGE = "orange",
-  PURPLE = "purple",
-  PINK = "pink",
-  BROWN = "brown",
-  BLACK = "black",
-  WHITE = "white",
+  RED = 'red',
+  GREEN = 'green',
+  BLUE = 'blue',
+  YELLOW = 'yellow',
+  ORANGE = 'orange',
+  PURPLE = 'purple',
+  PINK = 'pink',
+  BROWN = 'brown',
+  BLACK = 'black',
+  WHITE = 'white',
 }
 
 interface Task {

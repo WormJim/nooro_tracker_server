@@ -1,6 +1,7 @@
 # Nooro Task Tracker API
 
-This is a simple Express application built with TypeScript. It serves as a starting point for building web applications using Express.
+This is a simple Express application built with TypeScript. It serves as a starting
+point for building web applications using Express.
 
 ## Project Structure
 

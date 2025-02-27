@@ -1,6 +1,6 @@
-import express from "express";
-import { setRoutes } from "./routes/index";
-import { PrismaClient } from "@prisma/client";
+import express from 'express';
+import { setRoutes } from './routes/index';
+import { PrismaClient } from '@prisma/client';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,12 +16,12 @@ app.listen(PORT, () => {
 });
 
 // Handle Prisma disconnection on server shutdown
-process.on("SIGINT", async () => {
+process.on('SIGINT', async () => {
   await prisma.$disconnect();
   process.exit(0);
 });
 
-process.on("SIGTERM", async () => {
+process.on('SIGTERM', async () => {
   await prisma.$disconnect();
   process.exit(0);
 });
