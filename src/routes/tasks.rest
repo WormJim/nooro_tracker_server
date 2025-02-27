@@ -1,0 +1,33 @@
+### TEST GET / Server
+GET http://localhost:3000/ HTTP/1.1
+Content-Type: application/json
+
+### TEST GET /api/tasks Server
+GET http://localhost:3000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+### TEST GET /api/tasks/:id Server
+GET http://localhost:3000/api/tasks/5 HTTP/1.1  
+Content-Type: application/json
+
+
+### TEST POST /api/tasks Server
+POST http://localhost:3000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Test Task"
+}
+
+### TEST PATCH /api/tasks Server
+PATCH http://localhost:3000/api/tasks/5 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Updated Task",
+    "description": "This is an updated task description, yay!",
+    "color": "red"
+}
+
+### TEST DELETE /api/tasks Server
+DELETE http://localhost:3000/api/tasks/4 HTTP/1.1 
