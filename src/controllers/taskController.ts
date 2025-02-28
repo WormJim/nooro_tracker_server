@@ -76,9 +76,10 @@ export class TaskController {
 
   public async deleteTask(req: Request, res: Response): Promise<void> {
     const taskId = parseInt(req.params.id, 10);
-    await prisma.task.delete({
+    const deletedTask = await prisma.task.delete({
       where: { id: taskId },
     });
-    res.status(204).send();
+
+    res.json(deletedTask);
   }
 }
