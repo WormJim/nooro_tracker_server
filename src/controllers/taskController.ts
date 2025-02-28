@@ -42,11 +42,12 @@ export class TaskController {
   }
 
   public async createTask(req: Request, res: Response): Promise<void> {
-    const { title, color } = req.body;
+    const { title, color, description } = req.body;
     const newTask = await prisma.task.create({
       data: {
         title,
         color,
+        description,
       },
     });
     res.status(201).json(newTask);
